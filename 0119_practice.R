@@ -111,4 +111,37 @@ f2 <- ggplot(comparison_data) +
        color = "Fire Intensity\n(Log FRP)")
 f2
 
+## Adding baselayer for the Thailand provinces
+thailand_provinces <- st_read("C:/Users/marin/Documents/1. Liu Lab/Practice_data_folder/Thailand_provinces/tha_admbnda_adm1_rtsd_20190221.shp")
 
+# ensure it is in the standard GPS format (WGS84)
+thailand_provinces <- st_transform(thailand_provinces, 4326)
+
+#filter for only one year to look at it closely
+fire_2025 <- all_fires[all_fires$YEAR == 2025 & all_fires$INSTRUMENT == "VIIRS", ]
+
+# check both layers are in the same Coordinate System (WGS84)
+fire_2025 <- st_transform(fire_2025, 4326)
+thailand_provinces <- st_transform(thailand_provinces, 4326)
+
+# create the map
+ggplot() +
+  # Layer 1: Thailand Province Borders
+  geom_sf(data = thailand_provinces, 
+          fill = "gray98", 
+          color = "gray80", 
+          size = 0.3) +
+  # Layer 2: Fire Points
+  # We increase 'size' and 'alpha' since we are only looking at one year
+  geom_sf(data = fire_2025, 
+          aes(color = FRP), 
+          size = 0.8, 
+          alpha = 0.6) +
+  # Styling
+  scale_color_viridis_c(option = "inferno", 
+                        trans = "log10", 
+                        name = "Fire Intensity\n(FRP)") +
+  theme_minimal() +
+  labs(title = "Thailand Wildfire Detections (2025)",
+       subtitle = "Data Source: NASA FIRMS (VIIRS)",
+       x = "Longitude", y = "Latitude") # Optional: adds a scale bar
