@@ -1,0 +1,42 @@
+
+# Geospatial Analysis: Practicing with NASA FIRMS and GFED Data
+
+**Author:** Marina
+
+**Date:** 2026-02-03
+
+## Project Overview
+
+This repository contains R scripts for practicing geospatial data
+analysis. I focus on:
+
+- Retrieving and processing **NASA FIRMS** (MODIS) fire data.
+- Analyzing spatial distributions of **FRP** (Fire Radiative Power).
+- Mapping fire data coordinates using `ggplot2`, `sf`, `raster`.
+- Analyzing temporal distributions across sites.
+
+## Key Analysis
+
+### Fire Radiative Power (FRP) Distribution
+
+I use the `sf` package to handle spatial geometries and filter for
+high-intensity fire events based on the FRP metric.
+
+## Repository Structure
+
+- scripts/: R scripts for data processing.
+
+- .gitignore: Configured to exclude large geospatial datasets (.shp,
+  .nc, .hdf).
+
+- README.md: Automatically generated report (Edit README.Rmd).
+
+## Tools Used
+
+- R / RStudio
+
+- sf: For Simple Features spatial data.
+
+- ggplot2: For data visualization.
+
+- Git: For version control.
