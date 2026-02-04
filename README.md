@@ -3,7 +3,7 @@
 
 **Author:** Marina
 
-**Date:** 2026-02-03
+**Date:** 2026-02-04
 
 ## Project Overview
 
@@ -17,7 +17,7 @@ analysis. I focus on:
 
 ## Key Analysis
 
-### Fire Radiative Power (FRP) Distribution
+### Using sf package
 
 I use the `sf` package to handle spatial geometries and filter for
 high-intensity fire events based on the FRP metric.
